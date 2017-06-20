@@ -35,8 +35,7 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                 <script>
                 var verif_page = <?php echo $category_description ?>;
                 $( document ).ready(function() {
-                var hauteur_video = $('.player').position(top);
-                console.log(hauteur_video);
+                var hauteur_video = $('.player').position();
                 function getCookie(cname) {
                     var name = cname + "=";
                     var decodedCookie = decodeURIComponent(document.cookie);
@@ -53,10 +52,10 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                     return "";
                 };
                 if (getCookie("verif_page") == verif_page){
-                    if (hauteur_video > getCookie("niveau_scroll")){
+                    if (hauteur_video.top > getCookie("niveau_scroll")){
                         var niveau_scroll_final = getCookie("niveau_scroll");
                     } else {
-                        var niveau_scroll_final = hauteur_video - 700;
+                        var niveau_scroll_final = hauteur_video.top - 120;
                     }
                     $(window).scrollTop( niveau_scroll_final );
                 } else {
@@ -111,7 +110,7 @@ if (x<?php echo get_the_id() ?> == 'vue'){
         </div>
         <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
-    </div>
+    </div><div class="fond_opaque"></div>
     <div class="menu_burger active">
     <div class="burger">
         <div class="tranche"></div>
@@ -122,7 +121,7 @@ if (x<?php echo get_the_id() ?> == 'vue'){
 </div>
 <div class="menu_ouvert">
     <div class="fenetre_menu">
-        <h3><i class="fa fa-times close_menu" aria-hidden="true"></i> MENU</h3>
+        <h3><i class="fa fa-times close_menu" aria-hidden="true"></i></h3>
         <div class="onglets">
             <a class="onglet" href="index.php">
                 <h2>Accueil</h2>
@@ -164,6 +163,7 @@ if (x<?php echo get_the_id() ?> == 'vue'){
         </div>
         <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
+        </div><div class="fond_opaque"></div>
     </div>
 </div>
     <div class="felicitations">
@@ -175,11 +175,9 @@ if (x<?php echo get_the_id() ?> == 'vue'){
             <div class="ok">J'ai compris !</div>
             <script>
                 $('.felicitations .fermer').click(function(){
-                    console.log('oui');
                     $('.felicitations').css('display','none')
                 });
                 $('.felicitations .ok').click(function(){
-                    console.log('oui');
                     $('.felicitations').css('display','none')
                 });
             </script>
@@ -443,10 +441,10 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                           var js, fjs = d.getElementsByTagName(s)[0];
                           if (d.getElementById(id)) return;
                           js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.9&appId=438001886583282";
+                          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.9&appId=628016657405082";
                           fjs.parentNode.insertBefore(js, fjs);
                         }(document, 'script', 'facebook-jssdk'));</script>
-                        <?php echo '<div class="fb-comments" data-href="https://scb-theophane38.c9users.io/?p='.$ids.'" data-width="800" data-numposts="5"></div>'; ?>
+                        <?php echo '<div class="fb-comments" data-href="https://scb-theophane38.c9users.io/?p='.$ids.'/" data-width="800" data-numposts="5"></div>'; ?>
                     </div>
                 </div>
             </div>
@@ -470,6 +468,9 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                                     <a href="'.get_permalink().'">
                                         <div class="image_papl image_papl'.get_the_ID().'">
                                             <img src="'.$lien_image.'">
+                                            <div class="fond_flou">
+                                                <img class="play" src="wp-content/themes/SCB/images/play.png">
+                                            </div>
                        
                                         </div>
                                     </a>
@@ -490,7 +491,7 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                         $key_1_value = get_post_meta( get_the_ID(), 'Lien', false );
                         foreach($key_1_value as $lien){
                             $code_video = $lien;
-                            $lien_image = "https://img.youtube.com/vi/".$lien."/mqdefault.jpg";
+                            $lien_image = "https://img.youtube.com/vi/".$lien."/maxresdefault.jpg";
                         };
                         echo '
                             <div class="video_papl">
@@ -498,6 +499,9 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                                     <a href="'.get_permalink().'">
                                         <div class="image_papl image_papl'.get_the_ID().'">
                                             <img src="'.$lien_image.'">
+                                            <div class="fond_flou">
+                                                <img class="play" src="wp-content/themes/SCB/images/play.png">
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -536,8 +540,10 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                            if (felicitations == 'non'){
                                $(window).on("scroll",function(){
                                    $(".felicitations").css({'display':'block'});
+                                   var height_screen = $(window).height();
+                                   var hauteur_feli = $(".felicitations .fenetre").height();
+                                   $(".felicitations .fenetre").css({'margin-top':height_screen/2-hauteur_feli/2})
                                    document.cookie = "felicitations=oui; expires=Thu, 18 Dec 2030 12:00:00 UTC";
-                                   console.log('patate');
                                    $(window).off("scroll");
                                });
                            };
@@ -558,33 +564,40 @@ if (x<?php echo get_the_id() ?> == 'vue'){
                         var width_video = $('#player').width();
                         var height_video = width_video/1.75;
                         
-                        var width_img_playlist = $('.content_article .playlist .video_playlist .image_video_playlist').width();
-                        console.log(width_img_playlist);
+                        var width_img_playlist = $(window).width()/100*29;
                         var height_img_playlist = width_img_playlist/1.75;
+                        console.log(width_img_playlist);
+                        console.log(height_img_playlist);
                         
                         var width_papl = $(".image_papl").width();
                         var height_papl = width_papl/1.75;
                         
                         $('.burger').click(function(){
                             $('.menu_ouvert').css({'display':'block'});
-                            console.log('patate');
                         });
                         $('.close_menu').click(function(){
                             $('.menu_ouvert').css({'display':'none'});
-                            console.log('patate');
                         });
                         $('.onglet').click(function(){
                             $('.menu_ouvert').css({'display':'none'});
-                            console.log('patate');
+                        });
+                        $('.fond_opaque').click(function(){
+                            $('.menu_ouvert').css({'display':'none'});
                         });
                         $('#player').css('height',height_video);
-                        if (width_screen>768){
+                        if (width_screen>1200){
                             $('.player').css('height',height_video);
                             $('.playlist').css('height',height_video);
                         } else {
                             $('.player').css('height','auto');
+                            $('.content_article .playlist .video_playlist .image_video_playlist').css({'height':height_img_playlist});
                         }
-                        
+                        if (width_screen < 1200){
+                            var width_image_papl = $('.image_papl').width();
+                            var height_image_papl = width_image_papl/1.77777777777;
+                            $('.image_papl .fond_flou').css({'width':width_image_papl,'height':height_image_papl,'margin-top':-height_image_papl})
+                            $('.image_papl .fond_flou .play').css({'margin-left':width_image_papl/2-35,'margin-top':height_image_papl/2-35})
+                        }
                         
                     };
                 </script>

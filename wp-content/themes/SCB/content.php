@@ -61,8 +61,22 @@
 <script>
     var hauteur_video = $(".texte_video").offset().top;
     var width_screen = $(window).width();
-    if (width_screen<720){
-        var height_screen = $(window).height();
-        $('.header').css('height',height_screen)
-    }
+    $( document ).ready(function(){
+        var left_play = ($('.chapitres .videos .video_principale .image_principale .wp-post-image').width())/2-50;
+        var top_play = ($('.chapitres .videos .video_principale .image_principale .wp-post-image').width())/1.77/2-50;
+        $('.chapitres .videos .video_principale .image_principale .play').css({'left':left_play,'top':top_play});
+        if (width_screen<1200){
+            var height_screen = $(window).height();
+            $('.header').css('height',height_screen)
+        }
+    });
+    window.onresize = function(){
+        var left_play = ($('.chapitres .videos .video_principale .image_principale .wp-post-image').width())/2-50;
+        var top_play = ($('.chapitres .videos .video_principale .image_principale .wp-post-image').height())/2-50;
+        $('.chapitres .videos .video_principale .image_principale .play').css({'left':left_play,'top':top_play});
+        if (width_screen<1200){
+            var height_screen = $(window).height();
+            $('.header').css('height',height_screen)
+        }
+    };
 </script>

@@ -11,6 +11,9 @@
           <a class="btn_livret" href="wp-content/themes/SCB/livret.pdf" target="_blank"><span>En PDF</span></a>
         </div>
     </div>
+    <div class="entourage_mobile">
+      <a href="http://www.entourage.social/" target="_blank"><img src="wp-content/themes/SCB/images/logo_entourage.png"></a>
+    </div>
     <div class="fleche">
       <img src="wp-content/themes/SCB/images/fleche.PNG">
     </div>
@@ -22,7 +25,7 @@
         <img class="logo_entourage" src="wp-content/themes/SCB/images/logo_entourage.png">
       </div>
       <div class="container_texte">
-        <p>Un site pensé par <a href="http://www.entourage.social/" target="_blank">Entourage</a></p>
+        <p>Un site conçu par <a href="http://www.entourage.social/" target="_blank">Entourage</a></p>
       </div>
     </div>
 
@@ -30,12 +33,22 @@
   <script>
 
   $(".btn_video").click(function(){
-    $('html, body').animate({
-  	  scrollTop:$('.menu').offset().top
+    if ($(window).width() > 1200){
+      $('html, body').animate({
+    	  scrollTop:$('.chapitres').offset().top-120
       }, 'fast')
+    } else {
+      $('html, body').animate({
+    	  scrollTop:$('.chapitres').offset().top
+      }, 'fast')
+    }
   });
   $(document).ready(function(){
     var offset_menu = $('.menu').offset().top;
+    var width_screen = $(window).width();
+    if (width_screen>1200){
+      $('.bonjour div').css({'margin-top':($('.bonjour').height()-120)/2-$('.bonjour div').height()/2})
+    };
     $(window).scroll(function() {
       var screen_width = $(window).width();
       var height = $(window).scrollTop();
@@ -57,6 +70,10 @@
   });
   window.onresize = function(){
     var offset_menu = $('.menu').offset().top;
+    var width_screen = $(window).width();
+    if (width_screen>1200){
+      $('.bonjour div').css({'margin-top':($('.bonjour').height()-120)/2-$('.bonjour div').height()/2})
+    };
     $(window).scroll(function() {
       var height = $(window).scrollTop();
       if(height  >= offset_menu) {

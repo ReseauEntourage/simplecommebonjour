@@ -21,7 +21,7 @@
     </div>
     <div class="footer">
         <div class="container">
-            <a href="#">Contact</a>
+            <a href="#">Vos questions</a>
             <a href="#">Mentions légales</a>
             <a href="#">A propos</a>
         </div>
@@ -33,8 +33,7 @@
                 <a href="http://lafrancesengage.fr/" target="_blank">
                     <img src="wp-content/themes/SCB/images/logo_lafrancesengage.png">
                 </a>
-            </div>
-            <div class="partenaires_d">
+            </div><div class="partenaires_d">
                 <a href="http://www.fondationbs.org/" target="_blank">
                     <img src="wp-content/themes/SCB/images/logo_fondationbettencourt.JPG">
                 </a>

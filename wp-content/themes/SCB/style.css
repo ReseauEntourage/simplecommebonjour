@@ -15,14 +15,16 @@ Description: Thème Simple Comme Bonjour
 }
 @font-face {
     font-family: "DIN";
-    src: url('fonts/DINRegular.ttf')
+    src: url('fonts/DINRegular.TTF')
 }
 body {
     padding: 0;
     margin: 0;
     line-height: 25px;
     width: 100%;
-    overflow-x: hidden;
+}
+.overflow {
+    
 }
 .container {
     width: 1200px;
@@ -58,41 +60,33 @@ body {
                                 /* HEADER */
 
 
-/*.accueil:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.2;
-    background-image: url('images/photo_bg.jpg');
-    background-size: cover;
-    background-position: bottom;
-    z-index: 0;
-}
-*/
 video {
   position: absolute; 
   right: 0; 
   bottom: 0;
   min-width: 100%; 
-  min-height: 100%;
+  min-height: 450px;
   width: auto; 
   height: auto; 
   z-index: 00;
   background-size: cover;
-  overflow-x: hidden;
+}
+.header {
+    min-height: 500px;
+    position: relative;
 }
 .accueil {
     width: 100%;
+    overflow-x: hidden;
+    position: relative;
     text-align: center;
-    padding-top: calc(100vh / 2 - 205px);
-    padding-bottom: calc(100vh / 2 - 205px); 
+    height: 100vh;
 }
 .accueil .logo {
     position: relative;
+    overflow: hidden;
     z-index: 2;
+    margin-top: calc(100vh / 2 - 200px);
 }
 .accueil .logo .petit_guide {
     font-family: "DIN";
@@ -153,6 +147,9 @@ video {
     -o-transform: rotate(-11deg);
     -webkit-transform:rotate(-11deg);
     transform: rotate(-11deg);
+}
+.accueil .entourage_mobile {
+    display: none;
 }
 .accueil .fleche {
     opacity: 1;
@@ -234,7 +231,7 @@ video {
     margin-left: 290px;
     padding-top: 90px;
 }
-.bonjour p {
+.bonjour div {
     width: 600px;
     font-family: "DIN";
     text-align: center;
@@ -242,6 +239,9 @@ video {
     margin-left: 100px;
     line-height: 23px;
     margin-top: 30px;
+}
+.bonjour div p {
+    margin-bottom: 15px;    
 }
 
                                     /* MENU */
@@ -333,7 +333,7 @@ video {
     position: absolute;
     right: 10px;
     width: 184px;
-    top: 10px;
+    top: 13px;
     display: none;
 }
 .menu .vosquestions {
@@ -510,6 +510,7 @@ video {
     text-align: center;
     font-family: "DIN";
     margin: 0;
+    line-height: 20px;
     font-size: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -518,22 +519,23 @@ video {
 }
 .chapitres .videos .video_principale .image_principale {
     width: 800px;
+    padding-top: 0;
     margin: auto;
 }
 .chapitres .videos .video_principale .image_principale .play {
-    display: none;
-    position: relative;
+    position: absolute;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    opacity: 0.6;
+    height: 100px;
     top: 250px;
     left: 375px;
 }
 .chapitres .videos .video_principale .image_principale:hover .play {
-    display: block;
+    opacity: 1;
 }
 .chapitres .videos .video_principale .image_principale:hover {
-    margin-top: -50px;
+    
 }
 .chapitres .videos .video_principale .image_principale .play:hover {
     border: none;
@@ -544,14 +546,18 @@ video {
     border: 1px solid rgba(0,0,0,0);
     padding: 0;
 }
+.chapitres .videos .video_principale .image_principale a {
+    position: relative;
+    display: block;
+}
 .chapitres .videos .video_principale .image_principale h3 {
     margin: 0;
 }
 .chapitres .videos .video_principale .image_principale img:hover {
-    border: 1px solid #e44d20;
+
 }
 .chapitres .videos .texte_video {
-    width: 844px;
+    width: 800px;
     margin: auto;
 }
 .chapitres .videos .texte_video img {
@@ -700,6 +706,7 @@ video {
     padding: 0;
     color: grey;
     font-size: 20px;
+    line-height: 20px;
     font-family: "DIN";
     text-align: center;
     margin-top: 115px;
@@ -966,6 +973,7 @@ video {
     text-decoration: none;
 }
 .content_article .papl_d h6 {
+    line-height: 20px;
     font-size: 20px;
     font-family: "DIN";
     margin: 0;
@@ -975,12 +983,32 @@ video {
 .content_article .papl_d p {
     color: black;
     font-size: 16px;
+    line-height: 16px;
 }
 .content_article .image_papl {
     line-height: 0;
 }
 .content_article .image_papl img {
     width: 450px;
+}
+.content_article .image_papl .fond_flou {
+    width: 450px;
+    height: 253px;
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    opacity: 0;
+    margin-top: -253px;
+}
+.content_article .image_papl:hover .fond_flou {
+    opacity: 1;
+    transition: 1s;
+}
+.content_article .image_papl .play {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    margin-left: 190px;
+    margin-top: 81px;
 }
 .page_questions {
     
@@ -1001,16 +1029,40 @@ video {
 .page_questions .menu h4 {
     font-size: 20px;
     text-align: center;
-    top: 23px;
+    top: 26px;
     -webkit-transform: rotate(-5deg);
     -moz-transform: rotate(-5deg);
     -ms-transform: rotate(-5deg);
     -o-transform: rotate(-5deg);
 }
+.page_questions .titre_vos_questions {
+    width: 300px;
+    margin: auto;
+    display: block;
+    margin-top: 200px;
+}
+.page_questions .texte_titre_vos_questions {
+    position: absolute;
+    text-align: center;
+    width: 1200px;
+    margin-top: -92px;
+    font-size: 35px;
+    color: white;
+    font-family: "KGAsTheDeer";
+    font-weight: normal;
+    padding-bottom: 67px;
+    border-bottom: 1px solid #ccc;
+}
+.page_questions .content_questions .rechercher {
+    display: none;
+}
+.page_questions .content_questions #menu_categorie {
+    display: none;
+}
 .page_questions .content_questions {
     width: 816px;
     font-family: "DIN";
-    margin-top: 200px;
+    margin-top: 50px;
     display: inline-block;
 }
 .page_questions .content_questions h4 {
@@ -1040,65 +1092,169 @@ video {
 .page_questions .content_questions .categories_questions a {
     text-decoration: none;
 }
-.page_questions .content_questions .titre_question {
-    width: 780px;
-    padding: 10px;
-}
-.page_questions .content_questions .titre_question h3 {
-    border-bottom: 1px solid #f1f1f1;
-}
-.page_questions .content_questions .texte_question {
+.page_questions .content_questions .question_reponse {
     width: 800px;
-    background-color: rgba(0,0,0,0.03);
-    margin-bottom: 50px;
-}
-.page_questions .content_questions .texte_question .infos_auteur {
-    width: 150px;
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
-}
-.page_questions .content_questions .texte_question .infos_auteur p {
+    border: 1px solid #f7f7f7;
+    border-radius: 10px;
+    padding-bottom: 3px;
+    color: grey;
     margin: 0;
+    margin-bottom: 30px;
 }
-.page_questions .content_questions .texte_question .infos_auteur img {
-    width: 96px;
-    height: 96px;
-    border-radius: 50px;
-    margin-top: 20px;
-    border: 2px solid #e44d20;
-}
-.page_questions .content_questions .texte_question .reponse {
-    width: 580px;
-    text-align: justify;
-    display: inline-block;
-}
-.page_questions .content_questions .texte_question .reponse p {
-    text-align: justify;
+.page_questions .content_questions .question_reponse .nom_categorie {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 7px;
     margin-bottom: 20px;
 }
-.page_questions .content_questions .texte_question .reponse a {
-    padding: 0 5px;
-    color: grey;
-    background-color: #ccc;
+.page_questions .content_questions .question_reponse .nom_categorie span a {
+    color: #e44d20;
     text-decoration: none;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin-right: 20px;
 }
-.page_questions .content_questions .texte_question .reponse a:hover {
+.page_questions .content_questions .question_reponse .question {
+    margin-bottom: 20px;
+}
+.page_questions .content_questions .question_reponse .profil_question {
+    width: 80px;
+    display: inline-block;
+    line-height: 0;
+    font-size: 0;
+    text-align: center;
+    vertical-align: bottom;
+}
+.page_questions .content_questions .question_reponse img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+.page_questions .content_questions .question_reponse .discussion {
+    width: 632px;
+    vertical-align: top;
+    display: inline-block;
+    line-height: 0;
+    font-size: 0;
+}
+.page_questions .content_questions .question_reponse .question .discussion .infos {
+    font-size: 12px;
+    color: grey;
+    margin-left: 15px;
+    margin-bottom: 3px;
+    line-height: 12px;
+}
+.page_questions .content_questions .question_reponse .question .discussion .bulle_discussion {
+    font-size: 15px;
+    width: 532px;
+    margin-right: 60px;
+    line-height: 23px;
+    background-color: #e44d20;
     color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.page_questions .content_questions .question_reponse .reponse .discussion .infos {
+    font-size: 12px;
+    color: grey;
+    line-height: 12px;
+    text-align: right;
+    margin-right: 15px;
+    margin-bottom: 3px;
+}
+.page_questions .content_questions .question_reponse .reponse .discussion .bulle_discussion {
+    font-size: 15px;
+    width: 552px;
+    margin-left: 60px;
+    line-height: 23px;
+    background-color: #f1f0f0;
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+}
+.page_questions .content_questions .question_reponse .profil_reponse {
+    width: 80px;
+    display: inline-block;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: bottom;
+    text-align: center;
+}
+.page_questions .content_questions .mots_cles {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 15px;
+    margin-left: 7px;
+}
+.page_questions .content_questions .question_reponse ul {
+    display: inline-block;
+}
+.page_questions .content_questions .question_reponse ul li {
+    display: inline-block;
+    background-color: #f1f0f0;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.page_questions .content_questions .question_reponse ul li a {
+    color: grey;
+    text-decoration: none;
+}
+.page_questions .content_questions .question_reponse ul li a:hover {
+    color: #ccc;
+}
+.page_questions .content_questions .autres_questions {
+    font-family: "DIN";
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.page_questions .content_questions .autres_questions i {
+    font-size: 60px;
+    color: #e44d20;   
+    display: inline-block;
+}
+.page_questions .content_questions .autres_questions p {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 19px;
+    margin-left: 10px;
+}
+.page_questions .content_questions .autres_questions a {
+    color: #e44d20;
+    font-weight: bold;
+    text-decoration: none;
+}
+.page_questions .retour_top {
+    display: none;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    background-color: rgba(228,77,32,0.7);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.page_questions .retour_top:hover {
+    background-color: rgba(228,77,32,1);
+}
+.page_questions .retour_top .fleche_retour_top {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    display: inline-block;
 }
 .page_questions .navigation_questions {
     display: inline-block;
     width: 250px;
     font-family: "DIN";
-    margin-top: 200px;
-    margin-left: 90px;
+    margin-top: 50px;
+    margin-left: 89px;
     background-color: rgba(0,0,0,0.03);
     padding: 20px;
     vertical-align: top;
-    
 }
 .page_questions .navigation_questions .search_bar  {
     text-align: center;
@@ -1184,6 +1340,8 @@ video {
 .infos_formulaire {
     margin-top: 200px;
     font-family: "DIN";
+    text-align: center;
+    margin-bottom: 20px;
 }
 .formulaire_questions {
     width: 100%;
@@ -1252,19 +1410,21 @@ video {
     background-color: #e44d20;
     padding: 5px 20px;
     margin-top: 20px;
-    border-radius: 5px;
+    border-radius: 3px;
     color: white;
     cursor: pointer;
     font-size: 17px;
-    border: 2px outset #e44d20;
+    border: none;
     transition: 1s;
 }
 .formulaire_questions form input[type="submit"]:hover {
-    border: 2px inset #e44d20;
-    transition: 1s;
+    text-shadow: 0 0 2px white;
 }
-.formulaire_questions form input[type="submit"]:focus {
-    outline-style: none;
+.formulaire_questions .erreur_input .text {
+    color: red;
+}
+.formulaire_questions .erreur_input .text i {
+    color: red;
 }
 .formulaire_questions p {
     color: grey;
@@ -1273,8 +1433,41 @@ video {
     color: #e44d20;
     font-weight: bold;
 }
+.formulaire_questions .erreur {
+    color: red;
+    font-family: "DIN";
+    font-size: 14px;
+    line-height: 16px;
+}
+.message_envoye {
+    width: 320px;
+    left: calc(50% - 161px);
+    top: 500px;
+    background-color: white;
+    position: fixed;
+    left: calc(100% / 2 - 150);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+.message_envoye i {
+    position: absolute;
+    right: 2px;
+    cursor: pointer;
+    top: 2px;
+    color: grey;
+}
+.message_envoye h3 {
+    font-family: "DIN";
+    padding: 10px 0;
+    text-align: center;
+}
+.message_envoye h3 span {
+    color: #e44d20;
+    font-family: "KGAsTheDeer";
+    font-family: 20px;
+}
 footer {
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 0;
 }
 footer .bandeau_entourage {
@@ -1405,8 +1598,10 @@ footer .partenaires img {
     .container {
         width: 100%;
     }
-    .accueil .entourage {
-        
+    .accueil {
+        width: 100%;
+        height: 100%;
+        text-align: center;
     }
     .content_article #player {
         width: 60%;
@@ -1453,15 +1648,37 @@ footer .partenaires img {
         width: 48%;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .header {
         background-image: url('images/bg_mobile.png');
         background-size: cover;
+        height: 100vh;
     }
     .accueil .entourage {
         display: none;
     }
-
+    .accueil .entourage_mobile {
+        display: block;
+        background-color: rgba(0,0,0,0.5);
+        margin-top: 10px;
+        color: white;
+        font-family: "DIN";
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        margin: auto;
+        margin-top: 20px;
+        line-height: 0;
+        border-radius: 20px;
+        padding: 5px;
+        display: inline-block;
+    }
+    .accueil .entourage_mobile a {
+        display: block;
+    }
+    .accueil .entourage_mobile img {
+        width: 40px;
+    }
     video {
         display: none;
     }
@@ -1479,9 +1696,10 @@ footer .partenaires img {
         margin-bottom: 20px;
         padding-top: 0;
     }
-    .bonjour p {
+    .bonjour div {
         margin: 0 5%;
         width: 90%;
+        margin-top: 70px;
         text-align: justify;
         margin-bottom: 10px;
     }
@@ -1530,7 +1748,7 @@ footer .partenaires img {
         display: none;
         position: fixed;
         top: 0;
-        border-bottom: 1px solid #ccc;
+        box-shadow: 0 4px 5px -2px rgba(0,0,0,0.1);
         line-height: 0;
         width: 100%;
         background-color: white;
@@ -1555,7 +1773,7 @@ footer .partenaires img {
     } 
     .burger {
         background-color: #e44d20;
-        padding: 10px;
+        padding: 12px;
         display: inline-block;
     }
     .burger .tranche {
@@ -1590,13 +1808,15 @@ footer .partenaires img {
         position: fixed;
         width: 100%;
         background-color: rgba(0,0,0,0.4);
-        z-index:100000;
+        z-index: 100000;
         top: 0;
         bottom: 0;
     }
     .fenetre_menu {
         width: 300px;
         height: 100%;
+        vertical-align: top;
+        display: inline-block;
         background-color: white;
     }
     .fenetre_menu h3 {
@@ -1672,16 +1892,42 @@ footer .partenaires img {
     .fenetre_menu .vosquestions a:hover {
         text-shadow: 0 0 2px white;
     }
+    .fenetre_menu .vosautresquestions {
+        position: absolute;
+        width: 145px;
+        bottom: 37px;
+        transform: rotate(-4deg);
+        text-align: center;
+        left: 70px;
+        color: white;
+        font-family: "KGAsTheDeer";
+        font-size: 22px;
+        font-weight: normal;
+        margin: 0;
+    }
+    .fenetre_menu .vosautresquestions a {
+        text-decoration: none;
+        color: white;
+    }
+    .fenetre_menu .vosautresquestions a:hover {
+        text-shadow: 0 0 2px white;
+    }
+    .fond_opaque {
+        width: calc(100% - 300px);
+        display: inline-block;
+        height: 100%;
+        background-color: rgba(255,255,255,0.4);
+    }
     .menu_burger h2 {
-            display: none;
-        }
-
+        display: none;
+    }
     .menu .onglets .onglet:last-child::after {
         content: "";
         width: 0;
     }
     .chapitres .videos .video_principale {
         width: 100%;
+        margin-top: 50px;
     }
     .chapitres .videos .video_principale h1 {
         width: 96%;
@@ -1718,6 +1964,7 @@ footer .partenaires img {
     }
     .titre_progression {
         font-size: 25px;
+        line-height: 25px;
         margin-bottom: 10px;
         margin-top: 60px;
     }
@@ -1781,6 +2028,21 @@ footer .partenaires img {
     .content_article .image_papl img {
         width: 100%;
     }
+    .content_article .image_papl .fond_flou {
+        display: block;
+        width: 91%;
+        height: 184px;
+        background-color: rgba(0,0,0,0.4);
+        position: absolute;
+        margin-top: -184px;
+    }
+    .content_article .image_papl .play {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        margin-left: 190px;
+        margin-top: 81px;
+    }
     .content_article .papl_g {
         width: 96%;
     }
@@ -1790,83 +2052,243 @@ footer .partenaires img {
     }
     .content_article .papl_d h6 {
         margin-top: 10px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .content_article .papl_d p {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    .felicitations .fenetre {
+        width: 100%;
+        line-height: 0;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0 0 2px black;
+        border-radius: 5px;
+        padding: 0;
+        height: auto;
+    }
+    .felicitations .fenetre .fermer {
+        margin-left: calc(100% - 32px);
+        color: #ccc;
+        cursor: pointer;
+    }
+    .felicitations .fenetre .fermer i {
+        font-size: 37px;
+        padding: 0;
+    }
+    .felicitations .fenetre h3 {
+        font-size: 40px;
+        color: #e44d20;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .felicitations .fenetre p {
+        margin-bottom: 13px;
+        text-align: center;
+        margin-top: 38px;
+        line-height: 28px;
+    }
+    .felicitations .fenetre .ok {
+        background-color: #e44d20;
+        padding: 10px;
+        border-radius: 20px;
+        color: white;
+        width: 100px;
+        line-height: 20px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 79px;
+        cursor: pointer;
+        margin-left:0 ;
+    }
+    .page_questions .titre_vos_questions {
+        width: 250px;
+        margin: auto;
+        display: block;
+        margin-top: 100px;
+    }
+    .page_questions .texte_titre_vos_questions {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        margin-top: -80px;
+        font-size: 35px;
+        color: white;
+        font-family: "KGAsTheDeer";
+        font-weight: normal;
+        padding-bottom: 55px;
+        border-bottom: 1px solid #ccc;
+    }
+    .page_questions .content_questions .rechercher {
+        text-align: center;
+        display: block;
+    }
+    .page_questions .content_questions .rechercher input[type="text"] {
+        padding: 10px;
+        display: inline-block;
+        margin: 0;
+        border-radius: 0;
+        width: 200px;
+        border: 1px solid #e44d20;
+    }
+    .page_questions .content_questions .rechercher .bouton_recherche {
+        background-image: url('images/search.PNG');
+        background-size: 24px;
+        display: inline-block;
+        color: white;
+        height: 37px;
+        width: 26px;
+        padding: 5px;
+        border: 1px solid #e44d20;
+        vertical-align: bottom;
+    }
+    .page_questions .content_questions .autres_questions {
+        padding: 10px 0;
+    }
+    .page_questions .content_questions .autres_questions p {
+        margin-top: 0;
+        display: block;
+        margin-left: 0;
+    }
+    .page_questions .content_questions .autres_questions a {
+        display: block;
+    }
+    .page_questions .retour_top {
+        display: none;
+        bottom: 5px;
+        right: 5px;
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        background-color: rgba(228,77,32,0.7);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .page_questions .retour_top .fleche_retour_top {
+        width: 25px;
+        height: 25px;
+        padding: 7.5px;
+    }
+    .page_questions .content_questions #menu_categorie {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: block;
+    }
+    .page_questions .content_questions #menu_categorie a { 
+    	display:block; 
+    	color: #fff; 
+    	text-decoration:none;
+    }
+    .page_questions .content_questions #menu_categorie li,
+    .page_questions .content_questions #menu_categorie li li {
+    	position: relative;
+    	text-align: left;
+    	margin: auto;
+    	width: 215px;
+    	color: #e44d20;
+    	padding: 6px 15px;
+    	background-color: #fff;
+    }
+    .page_questions .content_questions #menu_categorie li {
+        border: 1px solid #e44d20;
+    }
+    .page_questions .content_questions #menu_categorie li i {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        -webkit-transform:rotate(270deg);
+    	-moz-transform:rotate(270deg);
+    	-o-transform:rotate(270deg);
+    	tranform:rotate(270deg);
+    }
+    .page_questions .content_questions #menu_categorie li li {
+        background-color: #e44d20;
+        color: white;
+        margin-left: -2px;
+        width: 217px;
+    }
+    .page_questions .content_questions #menu_categorie > li li a { 
+        color: white; 
+    }
+    .page_questions .content_questions #menu_categorie > li + li {
+    	border-left: 1px solid #aaa;
+    	border-right: 1px solid #777;
+    }
+    .page_questions .content_questions #menu_categorie ul {
+    	position: absolute;
+    	top: 38px; left: -1px;
+    	max-height:0em;	
+    	margin: 0; padding: 0;
+    	background-color: #e44d20;
+    	color: white;
+    	overflow: hidden;
+    }
+    .page_questions .content_questions .categories form {
+        text-align: center;
+    }
+    .page_questions .content_questions .categories form select {
+        width: 218px;
+        padding: 10px;
+        color: #e44d20;
+        border: 1px solid #e44d20;
     }
     .page_questions .content_questions {
         width: 100%;
-        margin-top: 100px;
+        margin-top: 50px;
     }
     .page_questions .content_questions h3 {
         margin-left: 5px;
         margin-bottom: 20px;
     }
-    .page_questions .content_questions .categories_questions li {
-        margin: auto;
-        display: block;
-        margin-bottom: 20px;
+    .page_questions .content_questions h4 {
+        font-size: 15px;
     }
-    .page_questions .content_questions .titre_question {
-        width: 96%;
-        margin-top: 20px;
-        padding: 0 2%;
-    }
-    .page_questions .content_questions .texte_question {
+    .page_questions .content_questions {
         width: 100%;
-        padding: 0;
     }
-    .page_questions .content_questions .texte_question .infos_auteur {
+    .page_questions .content_questions .question_reponse {
         width: 100%;
-        background-color: #ccc;
-        line-height: 0
     }
-    .page_questions .content_questions .texte_question .infos_auteur .text_infos_auteur {
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 20px;
-        line-height: 25px;
+    .page_questions .content_questions .question_reponse .profil_question {
+        width: 15%;
     }
-    .page_questions .content_questions .texte_question .infos_auteur img {
-        margin-left: 5px;
+    .page_questions .content_questions .question_reponse .discussion {
+        width: 67%;
     }
-    .page_questions .content_questions .texte_question .reponse {
-        width: 96%;
-        padding-left: 2%;
-        padding-right: 2%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    .page_questions .search_bar_mobile  {
-        text-align: center;
-        margin-bottom: 20px;
+    .page_questions .content_questions .question_reponse .question .discussion .bulle_discussion {
         width: 90%;
-        display: block;
+        padding: 10px 5%;
+        line-height: 20px;
     }
-    .page_questions .search_bar_mobile h3 {
-        margin-bottom: 10px;
-        text-align: left;
+    .page_questions .content_questions .question_reponse .reponse .discussion .bulle_discussion {
+        width: 90%;
+        padding: 10px 5%;
+        margin-left: 0;
+        line-height: 20px;
     }
-    .page_questions .search_bar_mobile .screen-reader-text {
-        display: none;
-    }
-    .page_questions .search_bar_mobile #searchsubmit  {
-        font-family: "DIN";
-        cursor: pointer;
-        border-radius: 10px ;
-        border-style: solid;
+    .page_questions .content_questions .question_reponse .profil_reponse {
+        width: 15%;
     }
     .page_questions .navigation_questions {
-        display: none;
+        display: none;    
     }
-    .page_questions .content_questions .titre_question h3 {
-        margin-bottom: 0;
+    .infos_formulaire {
+        margin-top: 70px;
     }
-    .page_questions .content_questions .texte_question .infos_auteur {
-        text-align: left;
-        padding: 10px;
+    .formulaire_questions form {
+        width: 300px;
     }
-    .page_questions .content_questions .texte_question .infos_auteur img {
-        width: 50px;
-        height: 50px;
-        margin: 0;
+    .formulaire_questions form .text {
+        width: 300px;
+        margin:auto;
+        margin-bottom: 20px;
+    }
+    .formulaire_questions form input[type="text"] {
+        width: 200px;
     }
     footer .bandeau_entourage .bandeau_g h2 {
         display: none;
@@ -1909,6 +2331,16 @@ footer .partenaires img {
         width: 49%;
         text-align: center;
         margin: 0;
+    }
+}
+@media screen and (max-width: 720px) {
+    .content_article .papl_d h6 {
+        line-height: 20px;
+        font-size: 20px;
+    }
+    .content_article .papl_d p {
+        font-size: 16px;
+        line-height: 16px;
     }
 }
 @media screen and (max-width: 430px) {

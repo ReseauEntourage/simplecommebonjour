@@ -5,9 +5,9 @@
               echo '<h1>';
               the_title();
               echo '</h1>';
-              echo '<p>';
+              echo '<div>';
               the_content();
-              echo '</p>';
+              echo '</div>';
             endwhile;
             ?>
     </div>
@@ -79,8 +79,8 @@
             }
             echo '</script>';
             ?>
-<img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
-<h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
+    <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+    <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
 </div>
 <div class="menu_burger">
     <div class="burger">
@@ -125,7 +125,7 @@
         </div>
         <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
-    </div>
+    </div><div class="fond_opaque"></div>
 </div>
 <script>
     $( document ).ready(function(){
@@ -144,6 +144,9 @@
             $('.menu_ouvert').css({'display':'none'});
         });
         $('.onglet').click(function(){
+            $('.menu_ouvert').css({'display':'none'});
+        });
+        $('.fond_opaque').click(function(){
             $('.menu_ouvert').css({'display':'none'});
         });
         $('.menu .logo').click(function(){
