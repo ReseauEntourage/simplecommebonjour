@@ -53,25 +53,36 @@
 						scrollTop:$('.menu').offset().top
 					}, 'fast')
 				});
-				var width_screen = $(window).width();
-			    if (width_screen<720){
-			        var height_screen = $(window).height();
-			        $('.header').css('height',height_screen)
-			    }
+				$( document ).ready(function() {
+                    var width_screen = $(window).width();
+				    if (width_screen<1200){
+				        var height_screen = $(window).height();
+				        $('.header').css('height',height_screen)
+				    };
+                });
+                function responsive(){
+					var width_screen = $(window).width();
+				    if (width_screen<1200){
+				        var height_screen = $(window).height();
+				        $('.header').css('height',height_screen)
+				    };
+                };
 				</script>
 			</header>
 			<div class="bonjour">
 				<h1>Bonjour la rue !</h1>
+				<div>
 				<p>	
 					Et si nous agissions tous contre la <b>solitude des personnes sans-abri ?</b></br></br></br>
 					Préjugés, gêne ou peur de mal faire, les raisons sont nombreuses qui nous poussent à presser le pas en voyant un sans-abri.</br></br></br>
 					Et pourtant, la plupart des personnes de la rue vous le diront :</br></br></br>
 					<b>Le besoin de lien social est aussi vital que celui de manger !</b>
 				</p>
+				</div>
 			</div>
 			<div class="container">
 				<div class="infos_tourne">
-					<h3>Dès septembre vous trouverez ici des vidéos expliquant être à l'aise lorsque vous abordez des personnes sans-abri.</h3></br>
+					<h3>Dès septembre vous trouverez ici des vidéos expliquant comment être à l'aise lorsque vous abordez des personnes sans-abri.</h3></br>
 					<h3>Les vidéos sont encore en cours de production,</h3>
 					<h3>En attendant nous vous invitons à <a href="livret.pdf">téléchargez le livret</a></h3>
 				</div>

@@ -30,14 +30,16 @@ Description: Thème Simple Comme Bonjour
 }
 @font-face {
     font-family: "DIN";
-    src: url('fonts/DINRegular.ttf')
+    src: url('fonts/DINRegular.TTF')
 }
 body {
     padding: 0;
     margin: 0;
     line-height: 25px;
     width: 100%;
-    overflow-x: hidden;
+}
+.overflow {
+    
 }
 .container {
     width: 1200px;
@@ -73,40 +75,32 @@ body {
                                 /* HEADER */
 
 
-/*.accueil:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.2;
-    background-image: url('images/photo_bg.jpg');
-    background-size: cover;
-    background-position: bottom;
-    z-index: 0;
-}
-*/
 video {
   position: absolute; 
   right: 0; 
   bottom: 0;
   min-width: 100%; 
-  min-height: 100%;
+  min-height: 450px;
   width: auto; 
   height: auto; 
   z-index: 00;
   background-size: cover;
-  overflow-x: hidden;
+}
+.header {
+    min-height: 500px;
+    position: relative;
 }
 .accueil {
     width: 100%;
+    overflow-x: hidden;
+    position: relative;
     text-align: center;
     padding-top: calc(100vh / 2 - 205px);
     padding-bottom: calc(100vh / 2 - 205px); 
 }
 .accueil .logo {
     position: relative;
+    overflow: hidden;
     z-index: 2;
 }
 .accueil .logo .petit_guide {
@@ -252,14 +246,17 @@ video {
     margin-left: 290px;
     padding-top: 90px;
 }
-.bonjour p {
+.bonjour div {
     width: 600px;
     font-family: "DIN";
     text-align: center;
     font-size: 18px;
     margin-left: 100px;
     line-height: 23px;
-    margin-top: 60px;
+    margin-top: 30px;
+}
+.bonjour div p {
+    margin-bottom: 15px;    
 }
 
                                     /* MENU */
@@ -351,7 +348,7 @@ video {
     position: absolute;
     right: 10px;
     width: 184px;
-    top: 10px;
+    top: 13px;
     display: none;
 }
 .menu .vosquestions {
@@ -528,6 +525,7 @@ video {
     text-align: center;
     font-family: "DIN";
     margin: 0;
+    line-height: 20px;
     font-size: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -538,10 +536,9 @@ video {
     width: 800px;
     padding-top: 0;
     margin: auto;
-    margin-top: -107px;
 }
 .chapitres .videos .video_principale .image_principale .play {
-    position: relative;
+    position: absolute;
     border: none;
     width: 100px;
     opacity: 0.6;
@@ -563,6 +560,10 @@ video {
     height: 100%;
     border: 1px solid rgba(0,0,0,0);
     padding: 0;
+}
+.chapitres .videos .video_principale .image_principale a {
+    position: relative;
+    display: block;
 }
 .chapitres .videos .video_principale .image_principale h3 {
     margin: 0;
@@ -720,6 +721,7 @@ video {
     padding: 0;
     color: grey;
     font-size: 20px;
+    line-height: 20px;
     font-family: "DIN";
     text-align: center;
     margin-top: 115px;
@@ -986,6 +988,7 @@ video {
     text-decoration: none;
 }
 .content_article .papl_d h6 {
+    line-height: 20px;
     font-size: 20px;
     font-family: "DIN";
     margin: 0;
@@ -995,6 +998,7 @@ video {
 .content_article .papl_d p {
     color: black;
     font-size: 16px;
+    line-height: 16px;
 }
 .content_article .image_papl {
     line-height: 0;
@@ -1040,7 +1044,7 @@ video {
 .page_questions .menu h4 {
     font-size: 20px;
     text-align: center;
-    top: 23px;
+    top: 26px;
     -webkit-transform: rotate(-5deg);
     -moz-transform: rotate(-5deg);
     -ms-transform: rotate(-5deg);
@@ -1262,7 +1266,7 @@ video {
     width: 250px;
     font-family: "DIN";
     margin-top: 50px;
-    margin-left: 90px;
+    margin-left: 89px;
     background-color: rgba(0,0,0,0.03);
     padding: 20px;
     vertical-align: top;
@@ -1431,12 +1435,51 @@ video {
 .formulaire_questions form input[type="submit"]:hover {
     text-shadow: 0 0 2px white;
 }
+.formulaire_questions .erreur_input .text {
+    color: red;
+}
+.formulaire_questions .erreur_input .text i {
+    color: red;
+}
 .formulaire_questions p {
     color: grey;
 }
 .formulaire_questions p span {
     color: #e44d20;
     font-weight: bold;
+}
+.formulaire_questions .erreur {
+    color: red;
+    font-family: "DIN";
+    font-size: 14px;
+    line-height: 16px;
+}
+.message_envoye {
+    width: 320px;
+    left: calc(50% - 161px);
+    top: 500px;
+    background-color: white;
+    position: fixed;
+    left: calc(100% / 2 - 150);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+.message_envoye i {
+    position: absolute;
+    right: 2px;
+    cursor: pointer;
+    top: 2px;
+    color: grey;
+}
+.message_envoye h3 {
+    font-family: "DIN";
+    padding: 10px 0;
+    text-align: center;
+}
+.message_envoye h3 span {
+    color: #e44d20;
+    font-family: "KGAsTheDeer";
+    font-family: 20px;
 }
 footer {
     margin-top: 0px;
@@ -1665,7 +1708,7 @@ footer .partenaires img {
         margin-bottom: 20px;
         padding-top: 0;
     }
-    .bonjour p {
+    .bonjour div {
         margin: 0 5%;
         width: 90%;
         text-align: justify;
@@ -1741,7 +1784,7 @@ footer .partenaires img {
     } 
     .burger {
         background-color: #e44d20;
-        padding: 10px;
+        padding: 12px;
         display: inline-block;
     }
     .burger .tranche {
@@ -1776,7 +1819,7 @@ footer .partenaires img {
         position: fixed;
         width: 100%;
         background-color: rgba(0,0,0,0.4);
-        z-index:100000;
+        z-index: 100000;
         top: 0;
         bottom: 0;
     }
@@ -1931,6 +1974,7 @@ footer .partenaires img {
     }
     .titre_progression {
         font-size: 25px;
+        line-height: 25px;
         margin-bottom: 10px;
         margin-top: 60px;
     }
@@ -2018,6 +2062,12 @@ footer .partenaires img {
     }
     .content_article .papl_d h6 {
         margin-top: 10px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .content_article .papl_d p {
+        font-size: 22px;
+        line-height: 22px;
     }
     .felicitations .fenetre {
         width: 100%;
@@ -2249,6 +2299,20 @@ footer .partenaires img {
     .page_questions .navigation_questions {
         display: none;    
     }
+    .infos_formulaire {
+        margin-top: 70px;
+    }
+    .formulaire_questions form {
+        width: 300px;
+    }
+    .formulaire_questions form .text {
+        width: 300px;
+        margin:auto;
+        margin-bottom: 20px;
+    }
+    .formulaire_questions form input[type="text"] {
+        width: 200px;
+    }
     footer .bandeau_entourage .bandeau_g h2 {
         display: none;
     }
@@ -2290,6 +2354,16 @@ footer .partenaires img {
         width: 49%;
         text-align: center;
         margin: 0;
+    }
+}
+@media screen and (max-width: 720px) {
+    .content_article .papl_d h6 {
+        line-height: 20px;
+        font-size: 20px;
+    }
+    .content_article .papl_d p {
+        font-size: 16px;
+        line-height: 16px;
     }
 }
 @media screen and (max-width: 430px) {
