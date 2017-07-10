@@ -9,6 +9,7 @@ Description: Thème Simple Comme Bonjour
     font-size: 20px;
     margin-bottom: 20px;
     font-family: "ROBOTO";
+    padding: 10px;
 }
 .infos_tourne a {
     text-decoration: none;
@@ -256,7 +257,7 @@ video {
     margin-top: 30px;
 }
 .bonjour div p {
-    margin-bottom: 15px;    
+    margin-bottom: 35px;
 }
 
                                     /* MENU */
