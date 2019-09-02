@@ -1,9 +1,9 @@
 <!--div class="menu">
-    <img class="logo" src="wp-content/themes/SCB/images/logo.png">
+    <img class="logo" src="<?php asset_url('images/logo.png'); ?>">
     <div class="onglets">
         <?php
             $i = 1;
-            $categories = get_categories( 
+            $categories = get_categories(
             array(
                 'orderby' => 'slug')
             );
@@ -14,7 +14,7 @@
                         '*/' => '</span>',
                         '[ ]' => '</br>'
                     ));
-                    echo 
+                    echo
                         '<a class="onglet on'.$i.'" href="#chapitre-'.$i.'">
                             <p class="number">'.$i.'.</p>
                             <h2>'.$test.'</h2>
@@ -25,7 +25,7 @@
             }
         ?>
     </div>
-    <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+    <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
     <a id="donate-btn" href="https://www.entourage.social/don?utm_source=Bouton&utm_medium=SCB&utm_campaign=DON" target="_blank">
       <b>€</b>
       <span>Faire un don !</span>

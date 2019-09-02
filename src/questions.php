@@ -48,13 +48,13 @@
                 };
             ?>
         </div>
-        <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+        <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
         <h4 class="vosquestions"><a href="?formulaire=questions">vos questions</a></h4>
     </div>
     <div class="fond_opaque"></div>
 </div>
 <div class="menu active">
-    <a href="/"><img class="logo" src="wp-content/themes/SCB/images/logo.png"></a>
+    <a href="/"><img class="logo" src="<?php asset_url('images/logo.png'); ?>"></a>
     <div class="onglets">
         <?php
             $i = 1;
@@ -90,7 +90,7 @@
             };
         ?>
     </div>
-    <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+    <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
     <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
     <a id="donate-btn" href="https://www.entourage.social/don?utm_source=Bouton&utm_medium=SCB&utm_campaign=DON" target="_blank">
       <b>€</b>
@@ -125,7 +125,7 @@
                 $msg_empty_question="Sans question il sera difficile de vous répondre...";
                 $msg_erreur = true;
             }
-            
+
             if (!isset($msg_erreur))
             {
                 if (!empty($_POST['question']))
@@ -282,7 +282,7 @@
                         <?php } ?>
                         <div class="question">
                             <div class="profil_question">
-                                <img class="avatar" src="wp-content/themes/SCB/images/avatar.png">
+                                <img class="avatar" src="<?php asset_url('images/avatar.png'); ?>">
                             </div>
                             <div class="discussion">
                                 <p class="infos">
@@ -348,7 +348,7 @@
         </div>
     </div>
     <div class="retour_top">
-        <img class="fleche_retour_top" src="wp-content/themes/SCB/images/retour_top.png">
+        <img class="fleche_retour_top" src="<?php asset_url('images/retour_top.png'); ?>">
     </div>
 <?php endif; ?>
 <script>
@@ -383,7 +383,7 @@
     $('.bouton_recherche').click(function() {
         console.log('ok');
         $.post(
-            'wp-content/themes/SCB/post.php', // Un script PHP que l'on va créer juste après
+            '<?php asset_url('post.php'); ?>', // Un script PHP que l'on va créer juste après
             {
                 recherche : $("#recherche").val()  // Nous récupérons la valeur de nos inputs que l'on fait passer à connexion.php
             },

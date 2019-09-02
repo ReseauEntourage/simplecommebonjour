@@ -9,15 +9,15 @@
     <meta property="fb:app_id" content="239428523250939"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="wp-content/themes/SCB/images/logo.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="wp-content/themes/SCB/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="wp-content/themes/SCB/css/reset.css" type="text/css"/>
-    <link rel="stylesheet" href="wp-content/themes/SCB/css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="wp-content/themes/SCB/css/nprogress.css" type="text/css"/>
-    <script type="text/javascript" src="wp-content/themes/SCB/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="wp-content/themes/SCB/js/jquery.waypoints.min.js"></script>
-    <script type="text/javascript" src="wp-content/themes/SCB/js/nprogress.js"></script>
-    <script type="text/javascript" src="wp-content/themes/SCB/js/script.js"></script>
+    <link rel="shortcut icon" href="<?php asset_url('images/logo.ico'); ?>" type="image/x-icon"/>
+    <link rel="stylesheet" href="<?php asset_url('css/font-awesome.min.css'); ?>" type="text/css"/>
+    <link rel="stylesheet" href="<?php asset_url('css/reset.css'); ?>" type="text/css"/>
+    <link rel="stylesheet" href="<?php asset_url('css/style.css'); ?>" type="text/css"/>
+    <link rel="stylesheet" href="<?php asset_url('css/nprogress.css'); ?>" type="text/css"/>
+    <script type="text/javascript" src="<?php asset_url('js/jquery-3.2.1.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php asset_url('js/jquery.waypoints.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php asset_url('js/nprogress.js'); ?>"></script>
+    <script type="text/javascript" src="<?php asset_url('js/script.js'); ?>"></script>
     <?php wp_head(); ?>
   </head>
 <body>

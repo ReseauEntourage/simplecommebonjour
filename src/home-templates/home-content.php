@@ -1,7 +1,7 @@
 <div class="container">
     <?php
         $i = 1;
-        $categories = get_categories( 
+        $categories = get_categories(
             array(
                 'orderby' => 'slug')
             );
@@ -16,14 +16,14 @@
                             echo '<div class="chapitre">
                                 <div class="header_chapitre">
                                     <div class="ligne_titre_gauche"><img class="perso_un"';
-                                if ($i % 2 == 1){echo 'src="wp-content/themes/SCB/images/perso1.png"';}else if($i % 2 == 0){echo 'src="wp-content/themes/SCB/images/perso3.png"';};
+                                if ($i % 2 == 1){echo 'src="'.asset_url('images/perso1.png').'"';}else if($i % 2 == 0){echo 'src="'.asset_url('images/perso3.png').'"';};
                                 echo '/></div>
                                 <div class="titre" id="chapitre-'.$i.'">
                                 <p class="number">'.$i.'.</p>
                                 <h2>'.$test.'</h2>
                                 </div>
                                 <div class="ligne_titre_droite"><img class="perso_deux"';
-                                if ($i % 2 == 1){echo 'src="wp-content/themes/SCB/images/perso2.png"';}else if($i % 2 == 0){echo 'src="wp-content/themes/SCB/images/perso4.png"';};
+                                if ($i % 2 == 1){echo 'src="'.asset_url('images/perso2.png').'"';}else if($i % 2 == 0){echo 'src="'.asset_url('images/perso4.png').'"';};
                                 echo '/></div>
                             </div>
                                 ';

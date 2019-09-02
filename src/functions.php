@@ -139,4 +139,10 @@ register_taxonomy(
 );
 register_taxonomy_for_object_type( 'tags', 'question' );
 register_taxonomy_for_object_type( 'categories', 'question' );
+
+function asset_url($path) {
+  $version = filemtime(path_join(get_stylesheet_directory(), $path));
+  echo esc_url(path_join(get_template_directory_uri(), $path).'?'.$version);
+}
+
 ?>

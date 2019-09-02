@@ -10,7 +10,7 @@
 </script>
 <div class="article">
     <div class="menu active ">
-        <a href="index.php"><img class="logo" src="wp-content/themes/SCB/images/logo.png"></a>
+        <a href="index.php"><img class="logo" src="<?php asset_url('images/logo.png'); ?>"></a>
         <div class="navigation">
             <div class="onglets">
                 <?php
@@ -50,7 +50,7 @@
     // CREATION MENU
     foreach($categories as $cat) {
         if ($cat->category_parent == 0 and $cat->category_nicename != "non-classe" and $cat->category_nicename == $i){
-            $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie 
+            $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie
             $categories_IDs = $cat->cat_ID;
             $query = new WP_Query( array( 'type-post' => 'post', 'category_name' => 'video-principale-'.$i ));
             while ( $query->have_posts() ) {
@@ -61,7 +61,7 @@
                         echo 'current';
                     elseif ($i > $category_description)
                         echo 'inactive';
-                    
+
                     echo '" href="'.get_permalink().'">
                     <p class="number">'.$i.'.</p>
                     <h2>'.$categories_names.'</h2>
@@ -76,7 +76,7 @@
 ?>
             </div>
         </div>
-        <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+        <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
         <a id="donate-btn" href="https://www.entourage.social/don?utm_source=Bouton&utm_medium=SCB&utm_campaign=DON" target="_blank">
       <b>€</b>
@@ -100,13 +100,13 @@
             </a>
             <?php
                 $i = 1;
-                $categories = get_categories( 
+                $categories = get_categories(
                 array(
                     'orderby' => 'slug')
                 );
                 foreach($categories as $cat) {
         if ($cat->category_parent == 0 and $cat->category_nicename != "non-classe" and $cat->category_nicename == $i){
-            $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie 
+            $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie
             $categories_IDs = $cat->cat_ID;
             $query = new WP_Query( array( 'type-post' => 'post', 'category_name' => 'video-principale-'.$i ));
             while ( $query->have_posts() ) {
@@ -119,7 +119,7 @@
                     else {
                         echo '"';
                     };
-                        
+
                         echo ' href="'.get_permalink().'">
                         <p class="number">'.$i.'.</p>
                         <h2>'.$categories_names.'</h2>
@@ -130,10 +130,10 @@
             };
         };
     };
-                
+
             ?>
         </div>
-        <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+        <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
         </div><div class="fond_opaque"></div>
     </div>
@@ -143,7 +143,7 @@
             <div class="fermer"><i class="fa fa-times" aria-hidden="true"></i></div>
             <h3>FELICITATIONS !</h3>
             <p>Vous avez visionné toutes les vidéos ! Vous êtes maintenant prêt(e) à <span>passer à l'action</span> !</p>
-            <img src="wp-content/themes/SCB/images/perso_felicitations.png">
+            <img src="<?php asset_url('images/perso_felicitations.png'); ?>">
             <div class="ok">J'ai compris !</div>
             <script>
                 $('.felicitations .fermer').click(function(){
@@ -160,14 +160,14 @@
 <?php
     echo '
         <div class="ligne_titre_gauche"><img class="perso_un"';
-        if ($category_description % 2 == 1){echo 'src="wp-content/themes/SCB/images/perso1.png"';}else if($category_description % 2 == 0){echo 'src="wp-content/themes/SCB/images/perso3.png"';};
+        if ($category_description % 2 == 1){echo 'src="'.asset_url('images/perso1.png').'"';}else if($category_description % 2 == 0){echo 'src="'.asset_url('images/perso3.png').'"';};
         echo '/></div>
         <div class="titre" id="chapitre-'.$category_description.'">
         <p class="number">'.$category_description.'.</p>
         <h2>'.$category_name.'</h2>
         </div>
         <div class="ligne_titre_droite"><img class="perso_deux"';
-        if ($category_description % 2 == 1){echo 'src="wp-content/themes/SCB/images/perso2.png"';}else if($category_description % 2 == 0){echo 'src="wp-content/themes/SCB/images/perso4.png"';};
+        if ($category_description % 2 == 1){echo 'src="'.asset_url('images/perso2.png').'"';}else if($category_description % 2 == 0){echo 'src="'.asset_url('images/perso4.png').'"';};
         echo '/></div>
         </div>
         </div>
@@ -198,7 +198,7 @@
                         var player;
                         function onYouTubeIframeAPIReady() {
                             player = new YT.Player('player', {
-                                videoId: '<?php 
+                                videoId: '<?php
                                     $key_1_value = get_post_meta( $ids, 'Lien', false );
                                     foreach($key_1_value as $lien){
                                         echo $lien;
@@ -211,7 +211,7 @@
                             });
                         }
                         function onPlayerStateChange(event) {
-                            var interval = setInterval(function(){ 
+                            var interval = setInterval(function(){
                                 var testvideo = player.getVideoLoadedFraction();
 
                                 // if (testvideo > 0.99)
@@ -223,18 +223,18 @@
                                     document.cookie = "cookievideo<?php echo $ids ?>=vue; expires=Thu, 18 Dec 2030 12:00:00 UTC";
                                     var x<?php echo $ids ?> = getCookie("cookievideo<?php echo $ids ?>; expires=Thu, 18 Dec 2030 12:00:00 UTC");
                                 }
-    
+
                             }, 2000);
                         }
                         function stopVideo() {
                             player.stopVideo();
                         }
                     </script>
-                    
+
                         <div class="playlist">
                             <h5>Les autres vidéos du chapitre</h5>
                             <div class="videos_playlist">
-                            <?php 
+                            <?php
                             $query = new WP_Query( array( 'type-post' => 'post', 'category_name' => 'vidéo principale '.$category_description.''));
                             while ( $query->have_posts() ) {
                                 $query->the_post();
@@ -318,7 +318,7 @@
                             $nb_chapitres = $i;
                                 if ($cat_suivant !== $nb_chapitres){
                             ?>
-                            <a class="chapitre-suivant" href="<?php 
+                            <a class="chapitre-suivant" href="<?php
                                     $query = new WP_Query( array( 'type-post' => 'post', 'category_name' => 'video-principale-'.$cat_suivant ));
                                     while ( $query->have_posts() ) {
                                     $query->the_post();
@@ -327,7 +327,7 @@
                                      ?>">
                                 <div class="video_playlist suivant">
                                     <h6>Passer au chapitre suivant</h6>
-                                    <img src="wp-content/themes/SCB/images/fleche_suivant.png">
+                                    <img src="<?php asset_url('images/fleche_suivant.png'); ?>">
                                 </div>
                             </a>
                             <?php }; ?>
@@ -341,10 +341,10 @@
                             $lien_facebook = "https://www.facebook.com/dialog/share?app_id=239428523250939&href=https%3A//www.youtube.com/watch%3Fv%3D".$lien."";
                             $lien_twitter = "https://twitter.com/intent/tweet?url=https%3A//youtu.be/".$lien."";
                             $lien_google = "https://plus.google.com/share?url=https%3A//www.youtube.com/watch%3Fv%3D".$lien."";
-                            echo '<img src="wp-content/themes/SCB/images/partage_facebook.png" class="share_icon" onclick="window.open(';
+                            echo '<img src="'.asset_url('images/partage_facebook.png').'" class="share_icon" onclick="window.open(';
                             echo "'".$lien_facebook."', 'nom_interne_de_la_fenetre', config='height=700, width=700, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')";
                             echo '"/>';
-                            echo '<img src="wp-content/themes/SCB/images/partage_twitter.png" class="share_icon" onclick="window.open(';
+                            echo '<img src="'.asset_url('images/partage_twitter.png').'" class="share_icon" onclick="window.open(';
                             echo "'".$lien_twitter."', 'nom_interne_de_la_fenetre', config='height=700, width=700, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')";
                             echo '"></i>';
                         };
@@ -386,9 +386,9 @@
                                         <div class="image_papl image_papl'.get_the_ID().'">
                                             <img src="'.$lien_image.'">
                                             <div class="fond_flou">
-                                                <img class="play" src="wp-content/themes/SCB/images/play.png">
+                                                <img class="play" src="'.asset_url('images/play.png').'">
                                             </div>
-                       
+
                                         </div>
                                     </a>
                                 </div>
@@ -417,7 +417,7 @@
                                         <div class="image_papl image_papl'.get_the_ID().'">
                                             <img src="'.$lien_image.'">
                                             <div class="fond_flou">
-                                                <img class="play" src="wp-content/themes/SCB/images/play.png">
+                                                <img class="play" src="'.asset_url('images/play.png').'">
                                             </div>
                                         </div>
                                     </a>
@@ -448,7 +448,7 @@
                            'background-color':'#e44d20',
                            'box-shadow': '-1px 0 7px orange',
                         });
-                           
+
                        };
                        var felicitations = getCookie("felicitations");
                        if (!felicitations){
@@ -475,21 +475,21 @@
                     window.onresize = function(){
                         responsive();
                     };
-                
+
                     function responsive(){
                         var width_screen = $(window).width();
-                        
+
                         var width_video = $('#player').width();
                         var height_video = width_video/1.75;
-                        
+
                         var width_img_playlist = $(window).width()/100*29;
                         var height_img_playlist = width_img_playlist/1.75;
                         console.log(width_img_playlist);
                         console.log(height_img_playlist);
-                        
+
                         var width_papl = $(".image_papl").width();
                         var height_papl = width_papl/1.75;
-                        
+
                         $('.burger').click(function(){
                             $('.menu_ouvert').css({'display':'block'});
                         });

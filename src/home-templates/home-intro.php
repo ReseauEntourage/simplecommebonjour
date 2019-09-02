@@ -1,5 +1,5 @@
     <div class="bonjour">
-        <?php 
+        <?php
             $loop = new WP_Query( array( 'post_type' => 'bonjour', 'posts_per_page' => 1 ) );
             while ( $loop->have_posts() ) : $loop->the_post();
                 $custom_fields = get_post_custom();
@@ -10,7 +10,7 @@
                 the_content();
                 echo '<div class="onglets">';
                 $i = 1;
-                $categories = get_categories( 
+                $categories = get_categories(
                 array(
                     'orderby' => 'slug')
                 );
@@ -21,7 +21,7 @@
                             '*/' => '</span>',
                             '[ ]' => '</br>'
                         ));
-                        echo 
+                        echo
                             '<a class="onglet on'.$i.'" href="#chapitre-'.$i.'">
                                 <p class="number">'.$i.'.</p>
                                 <h2>'.$test.'</h2>
@@ -41,11 +41,11 @@
     </div>
 </div>
 <div class="menu">
-    <img class="logo" src="wp-content/themes/SCB/images/logo.png">
+    <img class="logo" src="<?php asset_url('images/logo.png'); ?>">
     <div class="onglets add-opacity">
         <?php
             $i = 1;
-            $categories = get_categories( 
+            $categories = get_categories(
             array(
                 'orderby' => 'slug')
             );
@@ -56,7 +56,7 @@
                         '*/' => '</span>',
                         '[ ]' => '</br>'
                     ));
-                    echo 
+                    echo
                         '<a class="onglet on'.$i.'" href="#chapitre-'.$i.'">
                             <p class="number">'.$i.'.</p>
                             <h2>'.$test.'</h2>
@@ -65,10 +65,10 @@
                         $i = $i + 1;
                 }
             }
-            
+
         ?>
     </div>
-    <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+    <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
     <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
     <a id="donate-btn" href="https://www.entourage.social/don?utm_source=Bouton&utm_medium=SCB&utm_campaign=DON" target="_blank">
       <b>€</b>
@@ -92,18 +92,18 @@
             </a>
             <?php
                 $i = 1;
-                $categories = get_categories( 
+                $categories = get_categories(
                 array(
                     'orderby' => 'slug')
                 );
                 foreach($categories as $cat) {
                      if ($cat->category_parent == 0 and $cat->category_nicename != "non-classe" and $cat->category_nicename == $i){
-                        $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie 
+                        $categories_names = strtr($cat->cat_name, array('\*' => '<span>','*/' => '</span>','[ ]' => '</br>')); //Récupération name chaque categorie
                         $categories_IDs = $cat->cat_ID;
                         $query = new WP_Query( array( 'type-post' => 'post', 'category_name' => 'video-principale-'.$i ));
                         while ( $query->have_posts() ) {
                             $query->the_post();
-                            echo 
+                            echo
                                 '<a class="onglet on'.$i.'" href="'.get_permalink().'">
                                     <p class="number">'.$i.'.</p>
                                     <h2>'.$categories_names.'</h2>
@@ -113,10 +113,10 @@
                         }
                     }
                 }
-                
+
             ?>
         </div>
-        <img class="questions" src="wp-content/themes/SCB/images/questions.PNG">
+        <img class="questions" src="<?php asset_url('images/questions.PNG'); ?>">
         <h4 class="vosquestions"><a href="?page=questions">vos questions</a></h4>
     </div><div class="fond_opaque"></div>
 </div>
