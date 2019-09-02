@@ -18,6 +18,7 @@
     <script type="text/javascript" src="wp-content/themes/SCB/js/jquery.waypoints.min.js"></script>
     <script type="text/javascript" src="wp-content/themes/SCB/js/nprogress.js"></script>
     <script type="text/javascript" src="wp-content/themes/SCB/js/script.js"></script>
+    <?php wp_head(); ?>
   </head>
 <body>
   <div class="overflow">
