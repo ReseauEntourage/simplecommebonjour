@@ -160,14 +160,14 @@
 <?php
     echo '
         <div class="ligne_titre_gauche"><img class="perso_un"';
-        if ($category_description % 2 == 1){echo 'src="'.asset_url('images/perso1.png').'"';}else if($category_description % 2 == 0){echo 'src="'.asset_url('images/perso3.png').'"';};
+        if ($category_description % 2 == 1){echo 'src="'.raw_asset_url('images/perso1.png').'"';}else if($category_description % 2 == 0){echo 'src="'.raw_asset_url('images/perso3.png').'"';};
         echo '/></div>
         <div class="titre" id="chapitre-'.$category_description.'">
         <p class="number">'.$category_description.'.</p>
         <h2>'.$category_name.'</h2>
         </div>
         <div class="ligne_titre_droite"><img class="perso_deux"';
-        if ($category_description % 2 == 1){echo 'src="'.asset_url('images/perso2.png').'"';}else if($category_description % 2 == 0){echo 'src="'.asset_url('images/perso4.png').'"';};
+        if ($category_description % 2 == 1){echo 'src="'.raw_asset_url('images/perso2.png').'"';}else if($category_description % 2 == 0){echo 'src="'.raw_asset_url('images/perso4.png').'"';};
         echo '/></div>
         </div>
         </div>
@@ -341,10 +341,10 @@
                             $lien_facebook = "https://www.facebook.com/dialog/share?app_id=239428523250939&href=https%3A//www.youtube.com/watch%3Fv%3D".$lien."";
                             $lien_twitter = "https://twitter.com/intent/tweet?url=https%3A//youtu.be/".$lien."";
                             $lien_google = "https://plus.google.com/share?url=https%3A//www.youtube.com/watch%3Fv%3D".$lien."";
-                            echo '<img src="'.asset_url('images/partage_facebook.png').'" class="share_icon" onclick="window.open(';
+                            echo '<img src="'.raw_asset_url('images/partage_facebook.png').'" class="share_icon" onclick="window.open(';
                             echo "'".$lien_facebook."', 'nom_interne_de_la_fenetre', config='height=700, width=700, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')";
                             echo '"/>';
-                            echo '<img src="'.asset_url('images/partage_twitter.png').'" class="share_icon" onclick="window.open(';
+                            echo '<img src="'.raw_asset_url('images/partage_twitter.png').'" class="share_icon" onclick="window.open(';
                             echo "'".$lien_twitter."', 'nom_interne_de_la_fenetre', config='height=700, width=700, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')";
                             echo '"></i>';
                         };
